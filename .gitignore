@@ -2,6 +2,11 @@
 *.vsidx
 *.suo
 read.lock
-*.dll
-*.pdb
-*.exe
+ModUI/obj/Release/*.*
+ModUI/obj/Debug/*.*
+ModUI/obj/Release/_IsIncrementalBuild
+ModUI/obj/Debug/_IsIncrementalBuild
+ModUI/bin/Release/*.*
+ModUI/bin/Debug/*.*
+ModUI/bin/Release/_IsIncrementalBuild
+ModUI/bin/Debug/_IsIncrementalBuild
