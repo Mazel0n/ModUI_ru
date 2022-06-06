@@ -9,17 +9,17 @@
 }
 
 ::-webkit-scrollbar {
-	width: 0.9vw;
+	width: 17px;
 }
 
 ::-webkit-scrollbar-thumb {
-	border: solid 0.86vh var(--background);
+	border: solid 7px var(--background);
 	background-color: var(--textColor); 
 	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	border: solid 0.6vh var(--background);
+	border: solid 5px var(--background);
 }
 
 body:not(.ready) {
