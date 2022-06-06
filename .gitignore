@@ -1,10 +1,7 @@
-/build/
 *.user
 *.vsidx
-_ReSharper.*/
-*.sdf
-bin/
-obj/
-Debug/
-Release/
 *.suo
+read.lock
+*.dll
+*.pdb
+*.exe
