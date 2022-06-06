@@ -89,6 +89,8 @@ namespace ModUI
 
         public static void ExecuteCommand(string command)
         {
+            if (command == "") return;
+
             var args = command.Split(' ').ToList();
             var cmdName = args[0].ToLower();
             if (args.Count > 1) args.RemoveAt(0);

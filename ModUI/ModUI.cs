@@ -23,7 +23,7 @@ namespace ModUI.Internals
         public override string Author => "BrennFuchS";
         public override string Version => version;
         public string Description => "User Interface for Mods!";
-        public override byte[] Icon => Properties.Resources._374x448;
+        public override byte[] Icon => Properties.Resources.ModUI_Logo;
 
         Keybind openMenu;
         Keybind openConsole;
@@ -65,6 +65,29 @@ namespace ModUI.Internals
         }
 
         List<Assembly> References = new List<Assembly>();
+        internal static Texture2D defaultIcon;
+
+        void SetFolderIcon(string folderPath, byte[] ico, string infoTip)
+        {
+            string iniText =
+                "[.ShellClassInfo]"  + Environment.NewLine +
+                "IconFile={0}"       + Environment.NewLine +
+                "IconIndex=0"        + Environment.NewLine +
+                "InfoTip={1}"        + Environment.NewLine +
+                "IconResource={0},0" + Environment.NewLine;
+
+            var icoPath = Path.Combine(folderPath, "folderIcon.ico");
+            if (File.Exists(icoPath)) File.Delete(icoPath);
+            File.WriteAllBytes(icoPath, ico);
+            File.SetAttributes(icoPath, FileAttributes.Hidden);
+
+            var iniPath = Path.Combine(folderPath, "desktop.ini");
+            if (File.Exists(iniPath)) File.Delete(iniPath);
+            File.WriteAllText(iniPath, string.Format(iniText, icoPath, infoTip));
+            File.SetAttributes(iniPath, FileAttributes.Hidden | FileAttributes.System);
+
+            File.SetAttributes(folderPath, FileAttributes.System);
+        }
 
         public override void OnMenuLoad()
         {
@@ -84,7 +107,7 @@ namespace ModUI.Internals
             if (!Directory.Exists(settingsPath)) Directory.CreateDirectory(settingsPath);
             if (!Directory.Exists(referencesPath)) Directory.CreateDirectory(referencesPath);
 
-            var references = Directory.GetFiles(referencesPath);
+            var references = Directory.GetFiles(referencesPath, "*.dll");
 
             foreach (var reference in references)
             {
@@ -174,6 +197,19 @@ namespace ModUI.Internals
             #endregion
 
             ui.transform.SetAsLastSibling();
+
+            var icon = new Texture2D(2, 2);
+            icon.LoadImage(Properties.Resources.Mod_Icon);
+            icon.filterMode = FilterMode.Trilinear;
+            icon.wrapMode = TextureWrapMode.Clamp;
+            icon.Apply();
+
+            _ModUI.defaultIcon = icon;
+
+            SetFolderIcon(modsFolder, Properties.Resources.ModsFolderIcon, "My Garage Mods Folder");
+            SetFolderIcon(assetsPath, Properties.Resources.assets, "Assets used by the Mods");
+            SetFolderIcon(settingsPath, Properties.Resources.settings, "Mod Settings");
+            SetFolderIcon(referencesPath, Properties.Resources.library, "Libraries used by the Mods");
         }
 
         public override void MenuUpdate() => Update();

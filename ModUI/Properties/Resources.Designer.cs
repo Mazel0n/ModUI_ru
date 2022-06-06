@@ -63,9 +63,39 @@ namespace ModUI.Properties {
         /// <summary>
         ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
         /// </summary>
-        internal static byte[] _374x448 {
+        internal static byte[] assets {
             get {
-                object obj = ResourceManager.GetObject("_374x448", resourceCulture);
+                object obj = ResourceManager.GetObject("assets", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] library {
+            get {
+                object obj = ResourceManager.GetObject("library", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] Mod_Icon {
+            get {
+                object obj = ResourceManager.GetObject("Mod_Icon", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] ModsFolderIcon {
+            get {
+                object obj = ResourceManager.GetObject("ModsFolderIcon", resourceCulture);
                 return ((byte[])(obj));
             }
         }
@@ -76,6 +106,26 @@ namespace ModUI.Properties {
         internal static byte[] modui {
             get {
                 object obj = ResourceManager.GetObject("modui", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] ModUI_Logo {
+            get {
+                object obj = ResourceManager.GetObject("ModUI_Logo", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Sucht eine lokalisierte Ressource vom Typ System.Byte[].
+        /// </summary>
+        internal static byte[] settings {
+            get {
+                object obj = ResourceManager.GetObject("settings", resourceCulture);
                 return ((byte[])(obj));
             }
         }

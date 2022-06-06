@@ -46,7 +46,6 @@ namespace ModUI
         public TMPro.TextMeshProUGUI headerText;
         public Transform modContainer;
         public Transform settingsContainer;
-        public Texture2D defaultIcon;
         static Stack<HistoryInfo> history = new Stack<HistoryInfo>();
 
         public GameObject modMenu;
@@ -244,7 +243,7 @@ namespace ModUI
 
                 this.icon.texture = icon;
             }
-            else icon.texture = ModUIController.instance.defaultIcon;
+            else icon.texture = _ModUI.defaultIcon;
 
             head.text = $"{mod.Name}";
             text.text = $"by {mod.Author} ({mod.Version})\n{desc}";

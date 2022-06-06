@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "docsify-darklight-theme": "^3.2.0"
+  },
+  "name": "modui",
+  "version": "1.0.0",
+  "description": "ModUI Documentation",
+  "main": "index.html",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BrennFuchS/ModUI.git"
+  },
+  "keywords": [
+    "ModManager",
+    "MyGarage"
+  ],
+  "author": "BrennFuchS",
+  "license": "GPL-3.0-or-later",
+  "bugs": {
+    "url": "https://github.com/BrennFuchS/ModUI/issues"
+  },
+  "homepage": "https://github.com/BrennFuchS/ModUI#readme"
+}

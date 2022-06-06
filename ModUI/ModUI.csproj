@@ -115,8 +115,19 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\374x448" />
+    <None Include="Resources\library" />
     <None Include="Resources\modui" />
+    <None Include="Resources\ModUI_Logo" />
+    <None Include="Resources\Mod_Icon" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ModsFolderIcon" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\assets" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\settings" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

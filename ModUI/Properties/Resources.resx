@@ -118,10 +118,25 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="assets" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\assets;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="library" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\library;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="ModsFolderIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\modsfoldericon;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
   <data name="modui" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\modui;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
-  <data name="_374x448" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\374x448;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  <data name="ModUI_Logo" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\ModUI_Logo;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="Mod_Icon" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Mod_Icon;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="settings" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\resources\settings;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
 </root>
