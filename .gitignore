@@ -1,1 +1,10 @@
-*.suo
+/build/
+*.user
+*.vsidx
+_ReSharper.*/
+*.sdf
+bin/
+obj/
+Debug/
+Release/
+.vs/ModUI/v17/.suo
