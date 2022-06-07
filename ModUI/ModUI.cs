@@ -92,8 +92,7 @@ namespace ModUI.Internals
         public override void OnMenuLoad()
         {
             target = GameObject.Find("UIController/MainMenu_Canvas/MenuDefaultButtons_Canvas");
-
-            if (ui != null) ui.transform.SetAsLastSibling();
+            GameObject.Find("UIController").transform.Find("MainMenu_Static_Canvas/Static_UI/VersionNumber").localPosition = new Vector3(-781.3f, -495.2f, 0f);
 
             if (loaded) return;
             loaded = true;
@@ -123,8 +122,6 @@ namespace ModUI.Internals
             var sph = ab.LoadAsset<SettingsPrefabHolder>("ModUI_SettingsPrefabHolder");
 
             prefabHolders.Add(sph);
-
-            GameObject.Find("UIController").transform.Find("MainMenu_Static_Canvas/Static_UI/VersionNumber").localPosition = new Vector3(-781.3f, -495.2f, 0f);
 
             ab.Unload(false);
 
@@ -234,8 +231,6 @@ namespace ModUI.Internals
         {
             target = Resources.FindObjectsOfTypeAll<GameObject>().First(x => x.name == "EscMenu");
             //loaded = false;
-
-            ui.transform.SetAsLastSibling();
         }
 
         public void CreateModSettings(ModSettings modSettings)
