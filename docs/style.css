@@ -9,17 +9,17 @@
 }
 
 ::-webkit-scrollbar {
-	width: 17px;
+	width: 1.7vh;
 }
 
 ::-webkit-scrollbar-thumb {
-	border: solid 7px var(--background);
+	border: solid 0.75vh var(--background);
 	background-color: var(--textColor); 
 	border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	border: solid 5px var(--background);
+	border: solid 0.5vh var(--background);
 }
 
 body:not(.ready) {
@@ -229,7 +229,7 @@ li input[type=checkbox] {
 .github-corner {
 	border-bottom: 0;
 	position: fixed;
-	right: 0;
+	left: 0;
 	text-decoration: none;
 	top: 0;
 	z-index: 1
@@ -241,10 +241,11 @@ li input[type=checkbox] {
 }
 
 .github-corner svg {
+	transform: rotate(270deg);
 	color: #fff;
 	fill: var(--accent);
-	height: 70px;
-	width: 70px
+	height: 50px;
+	width: 50px
 }
 
 main {
@@ -574,23 +575,6 @@ body.close .content {
 	.github-corner .octo-arm {
 		-webkit-animation: octocat-wave .56s ease-in-out;
 		animation: octocat-wave .56s ease-in-out
-	}
-
-	#docsify-darklight-theme {
-		position: absolute;
-		left: 10px;
-		top: 15px;
-		width: 25px;
-		height: 25px;
-		background-repeat: no-repeat;
-		background-image: var(--toogleImage);
-		-o-background-size: cover;
-		-moz-background-size: cover;
-		-webkit-background-size:cover;
-		background-size: cover;
-		cursor: pointer;
-		user-select: none;
-		transition: background-image .15s ease-in-out .15s
 	}
 }
 
@@ -1032,8 +1016,8 @@ pre:after {
 
 #docsify-darklight-theme {
 	position: fixed;
-	right: 20px;
-    top: 80px;
+	right: 10px;
+    top: 10px;
 	width: 25px;
 	height: 25px;
 	background-repeat: no-repeat;
