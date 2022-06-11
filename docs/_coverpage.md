@@ -2,4 +2,4 @@
 
 > A Mod Manager for My Garage
 
-[Getting Started](#Getting-Started)
+[Getting Started](#quick-start-guide)

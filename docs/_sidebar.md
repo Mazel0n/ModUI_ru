@@ -1,3 +1,11 @@
 - **Getting started**
-  - [Home](/)
-  - [Quick Start](quickstart.md)
+  - [Home](/#home)
+- **For creators**
+  - [Using ModUI](ForCreators/UsingModUI.md)
+    - [Adding Icon](ForCreators/Icon.md)
+    - [Adding Description](ForCreators/Description.md)
+    - [Adding Settings](ForCreators/Settings.md)
+    - [Adding & Using Keybinds](ForCreators/Keybinds.md)
+    - [Using Assets](ForCreators/Assets.md)
+- **API**
+  - [ModUI](API/ModUI.md)

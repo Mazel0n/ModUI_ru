@@ -12,6 +12,11 @@
 	width: 1.7vh;
 }
 
+::-webkit-scrollbar-track {
+	background-color: var(--background);
+	border-radius: 1.25px 1.25px 0px 0px;
+}
+
 ::-webkit-scrollbar-thumb {
 	border: solid 0.75vh var(--background);
 	background-color: var(--textColor); 
@@ -131,7 +136,7 @@ kbd {
 
 li input[type=checkbox] {
 	margin: 0 .2em .25em 0;
-	vertical-align: middle
+	vertical-align: middle;
 }
 
 .app-nav {
@@ -449,7 +454,7 @@ body.sticky .sidebar-toggle {
 
 .markdown-section p.tip,
 .markdown-section tr:nth-child(2n) {
-	background-color: var(--codeBackgroundColor)
+	background-color: var(--codeBackgroundColor);
 }
 
 .markdown-section p.tip {
@@ -458,7 +463,9 @@ body.sticky .sidebar-toggle {
 	border-top-right-radius: 2px;
 	margin: 2em 0;
 	padding: 12px 24px 12px 30px;
-	position: relative
+	position: relative;
+	border-radius: 0px 5px 5px 0px;
+	color: var(--codeTextColor);
 }
 
 .markdown-section p.tip:before {
@@ -479,7 +486,7 @@ body.sticky .sidebar-toggle {
 }
 
 .markdown-section p.tip code {
-	background-color: #efefef
+	background-color: #161616
 }
 
 .markdown-section p.tip em {
@@ -618,6 +625,8 @@ section.cover {
 }
 
 section.cover.show {
+	left: 0%;
+	right: 0%;
 	display: flex;
 	background: var(--coverBackground)!important;
 }
@@ -859,6 +868,7 @@ body {
 .markdown-section pre {
 	background-color: var(--codeBackgroundColor);
 	font-family: var(--codeFontFamily);
+	border-radius: 5px;
 }
 
 .markdown-section pre {
@@ -967,6 +977,29 @@ body {
 .token.entity {
 	cursor: help
 }
+
+/*.docsify-copy-code-button {
+	text-align: right;
+	font-size: .8rem;
+	height: 20px;
+	top: 0px;
+	right: 10px;
+	width: 140px;
+	background-color: var(--codeBackgroundColor);
+	font-family: Roboto Mono, Monaco, courier, monospace;
+}
+
+.docsify-copy-code-button > .success {
+	background-color: #2ecc71;
+	height: 20px;
+	border-radius: 3px;
+}
+
+.docsify-copy-code-button > .error {
+	background-color: #c0392b;
+	height: 20px;
+	border-radius: 3px;
+}*/
 
 .markdown-section pre>code {
 	-moz-osx-font-smoothing: initial;

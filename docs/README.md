@@ -1,18 +1,22 @@
-# Getting Started
+# ModUI :id=home
 
-> An `awesome` project.
+> Mod Manager for My Garage!
 
-Lorem ipsum dolor sit amet, gravida semper suspendisse ipsum, nam maecenas curabitur. Volutpat orci maecenas dui elementum. Massa at sollicitudin nec erat, sit libero dolor suspendisse amet, adipiscing dolor sed massa. Fermentum lectus. Est dignissim ac tempor, accusantium hac elit massa dictumst soluta
+Welcome to the ModUI documentation!
 
-## Libero dictumst mauris
+## Features
 
-Tempus etiam, justo nullam vel eros et. Conubia integer. Amet elit nulla, eu tortor fugit pede arcu wisi, elit maecenas commodo integer et vitae nonummy. 
+- :heavy_check_mark: Menu to display all your installed mods
+- :heavy_check_mark: Easy to install and use
+- :heavy_check_mark: Easy way of creating Settings
+- :heavy_check_mark: Easy way of creating Keybinds
+- :heavy_check_mark: Easy way of loading Assets
+- :heavy_check_mark: Reference loading
+- :heavy_check_mark: Console
+- :x: Code driven UI Builder (unfinished)
 
+## Quick Start Guide
 
-```bash
-    Lorem Ipsum
-```
-
-Curabitur amet sed voluptas convallis, urna sodales vivamus dui id minim eget, dapibus nostra dignissim, vestibulum mauris a tortor morbi lobortis eu, felis odio. Eu ligula taciti cras, faucibus ac vel quis donec sodales. Lacinia euismod sed semper donec. Magna aliquam sed non, vestibulum cursus sed ut vivamus felis porttitor, vestibulum nibh augue a pede, vehicula integer ut nunc proin. 
-
-Et diam integer euismod semper pede sapien, massa orci vel, lorem porttitor quam in orci amet, hymenaeos ultrices in. Urna ipsum pellentesque pretium quis, interdum ante commodo nullam eu tristique, aliquam nec velit nisl in, integer elementum ac recusandae nibh sit eu. Id libero lobortis sed quis. Luctus dapibus malesuada erat duis dolor pede, orci ut justo, diam enim id proin mi.
+- [Download the latest version of ModUI](https://github.com/BrennFuchS/ModUI/releases)
+- Put the `!!ModUI.dll` File into your Mods folder
+- Launch the Game!
