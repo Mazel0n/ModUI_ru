@@ -19,12 +19,12 @@ class::before {
 }
 
 type::before {
-    color: white;
+    color: var(--textColor);
     content: "<";
 }
 
 type::after {
-    color: white;
+    color: var(--textColor);
     content: ">";
 }
 

@@ -429,31 +429,7 @@ body.sticky .sidebar-toggle {
 	min-width: 100%
 }
 
-.markdown-section table {
-	border-collapse: collapse;
-	border-spacing: 0;
-	display: block;
-	margin-bottom: 1rem;
-	overflow: auto;
-	width: 100%
-}
-
-.markdown-section th {
-	font-weight: 700
-}
-
-.markdown-section td,
-.markdown-section th {
-	border: 1px solid #ddd;
-	padding: 6px 13px
-}
-
-.markdown-section tr {
-	border-top: 1px solid #ccc
-}
-
-.markdown-section p.tip,
-.markdown-section tr:nth-child(2n) {
+.markdown-section p.tip {
 	background-color: var(--codeBackgroundColor);
 }
 
