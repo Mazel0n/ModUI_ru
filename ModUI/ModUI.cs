@@ -152,9 +152,9 @@ namespace ModUI.Internals
 
                     modSettings.defaultsButton = modSettings.AddButton("reset all Settings to default", () => { modSettings.LoadDefaults(); });
 
-                    modSettings.LoadSettings(mod1.ModSettingsLoaded);
+                    modSettings.LoadAction = mod1.ModSettingsLoaded;
+                    modSettings.LoadSettings();
                 }
-                else modSettings.LoadSettings(null);
             }
 
             foreach (var mod in mods)

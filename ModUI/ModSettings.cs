@@ -62,6 +62,7 @@ namespace ModUI.Settings
             public List<Value> modSettings { get; set; } = new List<Value>();
         }
 
+        internal Action LoadAction;
         internal void SaveSettings()
         {
             var save = new Save();
@@ -80,7 +81,7 @@ namespace ModUI.Settings
             var text = JsonConvert.SerializeObject(save, config);
             File.WriteAllText(Path.Combine(optionsFolderPath, "settings.json"), text);
         }
-        internal void LoadSettings(Action onFinish)
+        internal void LoadSettings()
         {
             if (!File.Exists(Path.Combine(optionsFolderPath, "settings.json")))
             {
@@ -94,7 +95,7 @@ namespace ModUI.Settings
                     }
                 }
 
-                onFinish?.Invoke();
+                LoadAction?.Invoke();
                 return;
             }
             var text = File.ReadAllText(Path.Combine(optionsFolderPath, "settings.json"));
@@ -121,7 +122,7 @@ namespace ModUI.Settings
                 }
             }
 
-            onFinish?.Invoke();
+            LoadAction?.Invoke();
         }
         public void LoadDefaults()
         {
@@ -139,7 +140,9 @@ namespace ModUI.Settings
             if (ModUIController.instance.settingsContainer.childCount > 0)
                 for (var i = 0; i < ModUIController.instance.settingsContainer.childCount; i++)
                     GameObject.Destroy(ModUIController.instance.settingsContainer.GetChild(i).gameObject);
-            ModUIController.instance.CreateSettingsMenu(mod);
+            if (ModUIController.history.Peek().menu == ModUIController.MenuType.Settings) ModUIController.instance.CreateSettingsMenu(mod);
+
+            LoadAction?.Invoke();
         }
 
         internal Mod mod;

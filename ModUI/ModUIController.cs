@@ -46,7 +46,7 @@ namespace ModUI
         public TMPro.TextMeshProUGUI headerText;
         public Transform modContainer;
         public Transform settingsContainer;
-        static Stack<HistoryInfo> history = new Stack<HistoryInfo>();
+        internal static Stack<HistoryInfo> history = new Stack<HistoryInfo>();
 
         public GameObject modMenu;
         public GameObject settingsMenu;
