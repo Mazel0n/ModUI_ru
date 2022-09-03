@@ -25,6 +25,7 @@ namespace ModUI.Settings
             this.type = type;
         }
     }
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class IModSetttingsExpansion
     {
         public static string GetModSettingsFolder(this IModSettings modSettings)
@@ -81,9 +82,23 @@ namespace ModUI.Settings
         }
         internal void LoadSettings(Action onFinish)
         {
-            if (!File.Exists(Path.Combine(optionsFolderPath, "settings.json"))) return;
+            if (!File.Exists(Path.Combine(optionsFolderPath, "settings.json")))
+            {
+                for (var i = 0; i < settingsElements.Count; i++)
+                {
+                    var element = settingsElements[i];
+                    if (element != null && element is ModSetting)
+                    {
+                        var modSetting = (ModSetting)element;
+                        modSetting.value = modSetting.defaultValue;
+                    }
+                }
+
+                onFinish?.Invoke();
+                return;
+            }
             var text = File.ReadAllText(Path.Combine(optionsFolderPath, "settings.json"));
-            var save = JsonConvert.DeserializeObject<Save>(text);
+            dynamic save = JsonConvert.DeserializeObject<Save>(text);
 
             var modRefuseDisable = Attribute.GetCustomAttribute(mod.GetType(), typeof(ModRefuseDisable));
 
@@ -101,6 +116,7 @@ namespace ModUI.Settings
                             var attribute = (SettingSaveTargetTypeAttribute)Attribute.GetCustomAttribute(modSetting.GetType(), typeof(SettingSaveTargetTypeAttribute));
                             if (attribute != null) modSetting.value = JsonConvert.DeserializeObject(save.modSettings[o].value.ToString(), attribute.type);
                             else modSetting.value = save.modSettings[o].value;
+                            if (modSetting.value == null) modSetting.value = modSetting.defaultValue;
                         }
                 }
             }
@@ -305,10 +321,10 @@ namespace ModUI.Settings
         public interface IModSettingsElement { [EditorBrowsable(EditorBrowsableState.Never)]GameObject Create(object info); }
         public abstract class ModSetting
         {
-            [EditorBrowsable(EditorBrowsableState.Never)] public string Name;
-            [EditorBrowsable(EditorBrowsableState.Never)] public string ID { get; internal set; }
-            [EditorBrowsable(EditorBrowsableState.Never)] public object value;
-            [EditorBrowsable(EditorBrowsableState.Never)] public object defaultValue { get; internal set; }
+            public string Name { get; }
+            public string ID { get; internal set; }
+            internal object value { get; set; }
+            internal object defaultValue { get; set; }
 
             public ModSetting (string name, string ID, object defaultValue)
             {
@@ -404,7 +420,7 @@ namespace ModUI.Settings
         }
         public class RadioButtons : ModSetting, IModSettingsElement
         {
-            public List<string> Options = new List<string>();
+            public List<string> Options { get; internal set; } = new List<string>();
 
             public int Value
             {
@@ -492,14 +508,13 @@ namespace ModUI.Settings
                     Image = image;
                 }
 
+                public static Option Create(string text, Sprite image = null) => new Option(text, image);
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit, uint extrude, SpriteMeshType meshType, Vector4 border, bool generateFallbackPhysicsShape) => Create(text, Sprite.Create(texture, rect, pivot, pixelsPerUnit, extrude, meshType, border, generateFallbackPhysicsShape));
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit, uint extrude, SpriteMeshType meshType, Vector4 border) => Create(text, texture, rect, pivot, pixelsPerUnit, extrude, meshType, border, generateFallbackPhysicsShape: false);
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit, uint extrude, SpriteMeshType meshType) => Create(text, texture, rect, pivot, pixelsPerUnit, extrude, meshType, Vector4.zero);
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit, uint extrude) => Create(text, texture, rect, pivot, pixelsPerUnit, extrude, SpriteMeshType.Tight);
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot, float pixelsPerUnit) => Create(text, texture, rect, pivot, pixelsPerUnit, 0u);
                 public static Option Create(string text, Texture2D texture, Rect rect, Vector2 pivot) => Create(text, texture, rect, pivot, 100f);
-                public static Option Create(string text, Sprite image) => new Option(text, image);
-                public static Option Create(string text) => Create(text, null);
             }
             public List<Option> Options;
 
@@ -511,8 +526,6 @@ namespace ModUI.Settings
                     return int.Parse(value.ToString());
                 }
             }
-            public int MinValue;
-            public int MaxValue;
 
             public Action<int> OnValueChanged;
             public Dropdown(string name, string ID, int defaultValue, Action<int> onValueChanged, List<Option> options) : base(name, ID, defaultValue) { OnValueChanged = onValueChanged; Options = options; }

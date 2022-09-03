@@ -13,7 +13,6 @@ Welcome to the ModUI documentation!
 - :heavy_check_mark: Easy way of loading Assets
 - :heavy_check_mark: Reference loading
 - :heavy_check_mark: Console
-- :x: Code driven UI Builder (unfinished)
 
 ## Quick Start Guide
 

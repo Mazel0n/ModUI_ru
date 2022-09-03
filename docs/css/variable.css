@@ -1,0 +1,34 @@
+value::after {
+    color: #569CD6;
+    content: attr(v);
+}
+
+method::after {
+    color: #DCDCAA;
+    content: attr(m);
+}
+
+enum::after {
+    color: #B8D7A3;
+    content: attr(e);
+}
+
+class::before {
+    color: #4EC9B0;
+    content: attr(c);
+}
+
+type::before {
+    color: white;
+    content: "<";
+}
+
+type::after {
+    color: white;
+    content: ">";
+}
+
+struct::after {
+    color: #86C691;
+    content: attr(s);
+}

@@ -173,7 +173,6 @@ namespace ModUI
             {
                 instance.toggle = true;
                 instance.consoleWindow.SetActive(true);
-                MenuHelper.SetInteractMenu(true);
             }
         }
         public static void LogWarningFormat(string format, params string[] args) => LogWarning(string.Format(format, args));
@@ -184,7 +183,6 @@ namespace ModUI
             {
                 instance.toggle = true;
                 instance.consoleWindow.SetActive(true);
-                MenuHelper.SetInteractMenu(true);
             }
         }
         public static void LogErrorFormat(string format, params string[] args) => LogError(string.Format(format, args));

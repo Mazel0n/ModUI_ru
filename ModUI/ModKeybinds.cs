@@ -19,28 +19,6 @@ namespace ModUI.Keybinds
         void CreateModKeybinds(ModKeybinds modKeybinds);
     }
 
-    public static class KeybindExtension
-    {
-
-        public static bool GetKeybind(this ModKeybinds.Keybind kb)
-        {
-            if (kb == null) return false;
-            if (kb.Modifier != KeyCode.None) return Input.GetKey(kb.Key) && Input.GetKey(kb.Modifier);
-            return Input.GetKey(kb.Key);
-        }
-        public static bool GetKeybindDown(this ModKeybinds.Keybind kb)
-        {
-            if (kb == null) return false;
-            if (kb.Modifier != KeyCode.None) return Input.GetKeyDown(kb.Key) && Input.GetKey(kb.Modifier);
-            return Input.GetKeyDown(kb.Key);
-        }
-        public static bool GetKeybindUp(this ModKeybinds.Keybind kb)
-        {
-            if (kb == null) return false;
-            if (kb.Modifier != KeyCode.None) return Input.GetKeyUp(kb.Key) && Input.GetKey(kb.Modifier);
-            return Input.GetKeyUp(kb.Key);
-        }
-    }
     public class ModKeybinds
     {
         internal static bool allowCreating = false;
@@ -49,7 +27,7 @@ namespace ModUI.Keybinds
         internal Mod mod;
         internal string optionsFolderPath;
 
-        public void AddToKeybindsList<T>(T element) where T : ModSettings.IModSettingsElement
+        internal void AddToKeybindsList<T>(T element) where T : ModSettings.IModSettingsElement
         {
             if (!allowCreating) throw new Exception("ModUI.ModKeybinds: please create your Keybinds in the 'CreateModKeybinds' method!");
             keybindsElements.Add(element);
@@ -104,7 +82,7 @@ namespace ModUI.Keybinds
         public class Keybind : ModSettings.IModSettingsElement
         {
             public string ID { get; }
-            public string Name;
+            public string Name { get; }
             public KeyCode Key { get; internal set; }
             public KeyCode Modifier { get; internal set; }
             internal KeyCode DefaultKey, DefaultModifier;
@@ -117,6 +95,22 @@ namespace ModUI.Keybinds
                 Modifier = KeyModifier;
                 DefaultKey = Key;
                 DefaultModifier = KeyModifier;
+            }
+
+            public bool GetKeybind()
+            {
+                if (Modifier != KeyCode.None) return Input.GetKey(Key) && Input.GetKey(Modifier);
+                return Input.GetKey(Key);
+            }
+            public bool GetKeybindDown()
+            {
+                if (Modifier != KeyCode.None) return Input.GetKeyDown(Key) && Input.GetKey(Modifier);
+                return Input.GetKeyDown(Key);
+            }
+            public bool GetKeybindUp()
+            {
+                if (Modifier != KeyCode.None) return Input.GetKeyUp(Key) && Input.GetKey(Modifier);
+                return Input.GetKeyUp(Key);
             }
 
             [EditorBrowsable(EditorBrowsableState.Never)]

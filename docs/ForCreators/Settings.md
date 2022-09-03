@@ -6,7 +6,7 @@
 - Add the `IModSettings` interface to your Mod class
 - Add the `CreateModSettings` and `ModSettingsLoaded` methods to your Mod class
 
-For all the Types of Settings, check out [this](API/ModUI/ModSettings/Settings.md)
+For all the Types of Settings, check out [this](API/ModUI/Settings/ModSettings.md)
 
 ### Example Settings Creation
 

@@ -2,9 +2,11 @@
 using UnityEngine;
 using ModUI.Internals;
 using System.IO;
+using System.ComponentModel;
 
 namespace ModUI.Assets
 {
+    [EditorBrowsable(EditorBrowsableState.Never)]
     public static class IModAssetsExpansion
     {
         public static string GetModAssetsFolder(this IModAssets modAssets)
