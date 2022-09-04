@@ -70,6 +70,7 @@ namespace ModUI
 
         internal static bool openOnError = true;
         internal static bool openOnWarning = true;
+        internal static bool includeDebugLog = false;
 
         bool toggle = false;
         static bool writeToLog = false;
@@ -129,19 +130,22 @@ namespace ModUI
                 var text = $"{condition} {(stackTrace != "" ? "\n" + stackTrace : "")}";
                 writeToLog = false;
 
-                switch (type)
+                if (includeDebugLog)
                 {
-                    case LogType.Error:
-                    case LogType.Exception:
-                        LogError(text);
-                        break;
-                    case LogType.Assert:
-                    case LogType.Log:
-                        Log(text);
-                        break;
-                    case LogType.Warning:
-                        LogWarning(text);
-                        break;
+                    switch (type)
+                    {
+                        case LogType.Error:
+                        case LogType.Exception:
+                            LogError(text);
+                            break;
+                        case LogType.Assert:
+                        case LogType.Log:
+                            Log(text);
+                            break;
+                        case LogType.Warning:
+                            LogWarning(text);
+                            break;
+                    }
                 }
 
                 writeToLog = true;

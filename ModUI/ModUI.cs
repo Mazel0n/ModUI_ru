@@ -30,6 +30,7 @@ namespace ModUI.Internals
 
         Toggle consoleWarnOpen;
         Toggle consoleErrorOpen;
+        Toggle consoleIncludeDebugLog;
         Slider consoleWidth;
         Slider consoleHeight;
 
@@ -251,6 +252,8 @@ namespace ModUI.Internals
                 delta.y = value;
                 ModConsole.size = delta;
             });
+            consoleIncludeDebugLog = modSettings.AddToggle("Console Include Debug Log", "toggleConsoleIncludeDebugLog", false, (bool value) =>
+            { ModConsole.includeDebugLog = value; });
         }
 
         public void ModSettingsLoaded()
@@ -261,6 +264,7 @@ namespace ModUI.Internals
             size.x = Mathf.Clamp(size.x, Screen.width / 6f, Screen.width / 3f * 2f);
             size.y = Mathf.Clamp(size.y, Screen.height / 8f, Screen.height / 4f * 3f);
             ModConsole.size = size;
+            ModConsole.includeDebugLog = consoleIncludeDebugLog.Value;
         }
 
         public void CreateModKeybinds(ModKeybinds modKeybinds)
