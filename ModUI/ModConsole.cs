@@ -1,11 +1,15 @@
-﻿using System;
+﻿using ArctiumStudios.SplineTools;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static ModUI.Settings.ModSettings;
 
 namespace ModUI
 {
@@ -53,6 +57,8 @@ namespace ModUI
         }
 
         internal static Dictionary<string, Command> commands = new Dictionary<string, Command>();
+        internal static Queue<string> history = new Queue<string>();
+        internal static int historyIndex = -1;
         internal static ModConsole instance;
         [SerializeField] internal TMPro.TextMeshProUGUI log;
         [SerializeField] internal TMPro.TMP_InputField commandField;
@@ -71,6 +77,7 @@ namespace ModUI
         internal static bool openOnError = true;
         internal static bool openOnWarning = true;
         internal static bool includeDebugLog = false;
+        internal static bool includeCallingMethod = false;
 
         bool toggle = false;
         static bool writeToLog = false;
@@ -81,22 +88,34 @@ namespace ModUI
             consoleWindow.SetActive(toggle);
             ModUIController.instance.eventSystem.SetActive(toggle || ModUIController.instance.canvas.activeSelf);
             MenuHelper.SetInteractMenu(toggle);
+            if (toggle)
+            {
+                commandField.ActivateInputField();
+                commandField.Select();
+            }
         }
         public void Run()
         {
             ExecuteCommand(commandField.text);
             commandField.text = "";
+            commandField.ActivateInputField();
+            commandField.Select();
         }
 
         public static void ExecuteCommand(string command)
         {
             if (command == "") return;
 
+            history.Enqueue(command);
+            historyIndex = -1;
+
+            if (history.Count > maxLogData) history.Dequeue();
+
             var args = command.Split(' ').ToList();
             var cmdName = args[0].ToLower();
             if (args.Count > 1) args.RemoveAt(0);
 
-            if (!commands.ContainsKey(args[0])) { LogError($"ModUI.ModConsole: Command '{args[0]}' doesn't exist!"); return; }
+            if (!commands.ContainsKey(args[0])) { LogError($"Command '{args[0]}' doesn't exist!"); return; }
 
             commands[cmdName].Run(args.ToArray());
         }
@@ -109,6 +128,52 @@ namespace ModUI
         void FixedUpdate()
         {
             if (rectWindow.sizeDelta != size) rectWindow.sizeDelta = size;
+        }
+
+        bool wasFocused = false;
+        int cmds = 0;
+        void Update()
+        {
+            if (commandField.isFocused)
+            {
+                if (!wasFocused)
+                {
+                    wasFocused = true;
+                    cmds = history.Count;
+                    historyIndex = cmds;
+                }
+                if (Input.GetKeyDown(KeyCode.UpArrow))
+                {
+                    if (cmds != 0)
+                    {
+                        if (historyIndex != 0)
+                            historyIndex--;
+                        commandField.text = history.ToArray()[historyIndex];
+                        commandField.MoveTextEnd(false);
+                    }
+                }
+                if (Input.GetKeyDown(KeyCode.DownArrow))
+                {
+                    if (cmds != 0)
+                    {
+                        historyIndex++;
+                        if (historyIndex != cmds)
+                        {
+                            commandField.text = history.ToArray()[historyIndex];
+                            commandField.MoveTextEnd(false);
+                        }
+                        else
+                        {
+                            historyIndex--;
+                        }
+
+                    }
+                }
+            }
+            else
+            {
+                wasFocused = false;
+            }
         }
 
         void Start()
@@ -147,12 +212,11 @@ namespace ModUI
                             break;
                     }
                 }
-
                 writeToLog = true;
             };
 
             rectWindow = consoleWindow.GetComponent<RectTransform>();
-            commandField.onEndEdit.AddListener((string value) => { Run(); });
+            commandField.onEndEdit.AddListener((string value) => { if (Input.GetKeyDown(KeyCode.Return)) Run(); });
             consoleWindow.SetActive(false);
         }
 
@@ -160,11 +224,14 @@ namespace ModUI
 
         public static void Log(object message)
         {
+            var stackTrace = new StackTrace();
+            var method = stackTrace.GetFrame(1).GetMethod();
+
             if (writeToLog)
             {
-                Console.WriteLine(message);
+                Console.WriteLine($"[{method.DeclaringType.Name}.{method.Name}]\n{message}");
             }
-            logData.Enqueue(message.ToString());
+            logData.Enqueue(method.DeclaringType != typeof(ModConsole) && includeCallingMethod ? $"<color=white>[<color=orange>{method.DeclaringType.Name}</color>.<color=orange>{method.Name}</color>]</color>\n{message}" : message.ToString());
             if (logData.Count > maxLogData) logData.Dequeue();
 
             instance.UpdateLog();
