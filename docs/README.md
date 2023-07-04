@@ -1,8 +1,8 @@
 # ModUI :id=home
 
-> Mod Manager for My Garage!
+> Мод менеджер для My Garage!
 
-Welcome to the ModUI documentation!
+Добро пожаловать в документацию по ModUI!
 
 ## Features
 
