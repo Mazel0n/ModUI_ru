@@ -18,4 +18,4 @@ Welcome to the ModUI documentation!
 
 - [Download the latest version of ModUI](https://github.com/BrennFuchS/ModUI/releases)
 - Put the `!!ModUI.dll` File into your Mods folder
-- Launch the Game!
+- Запустите игру!
