@@ -4,18 +4,18 @@
 
 Добро пожаловать в документацию по ModUI!
 
-## Features
+## Особенности
 
-- :heavy_check_mark: Menu to display all your installed mods
-- :heavy_check_mark: Easy to install and use
-- :heavy_check_mark: Easy way of creating Settings
-- :heavy_check_mark: Easy way of creating Keybinds
-- :heavy_check_mark: Easy way of loading Assets
+- :heavy_check_mark: Меню для отображения всех установленных вами модов
+- :heavy_check_mark: Простой для установки и использования
+- :heavy_check_mark: Простой способ настройки
+- :heavy_check_mark: способ создания биндов
+- :heavy_check_mark: Простой способ загрузки Assets
 - :heavy_check_mark: Reference loading
-- :heavy_check_mark: Console
+- :heavy_check_mark: Консоль
 
-## Quick Start Guide
+## Краткое руководство для начала работы
 
-- [Download the latest version of ModUI](https://github.com/BrennFuchS/ModUI/releases)
-- Put the `!!ModUI.dll` File into your Mods folder
+- [Скачайте последнюю версию ModUI](https://github.com/BrennFuchS/ModUI/releases)
+- Поместите Файл `!!ModUI.dll` в вашу папку Mods
 - Запустите игру!
