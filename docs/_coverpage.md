@@ -2,4 +2,4 @@
 
 > Мод менеджер для My Garage
 
-[Начать](#quick-start-guide)
+[Начало работы](#quick-start-guide)
