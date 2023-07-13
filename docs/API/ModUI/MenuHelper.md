@@ -2,9 +2,9 @@
 
 *Namespace: [ModUI](API/ModUI.md)*
 
-### Description
+### Описание
 
-Helper for making menus.
+Помощник для создания меню. 
 
 ### Static Functions
 
