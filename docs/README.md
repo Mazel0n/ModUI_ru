@@ -10,7 +10,7 @@
 - :heavy_check_mark: Простой для установки и использования
 - :heavy_check_mark: Простой способ настройки
 - :heavy_check_mark: способ создания биндов
-- :heavy_check_mark: Простой способ загрузки Assets
+- :heavy_check_mark: Простой способ загрузки Ассетов
 - :heavy_check_mark: Reference loading
 - :heavy_check_mark: Консоль
 
